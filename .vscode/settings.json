@@ -1,4 +1,7 @@
 {
-    "nuxt.isNuxtApp": false,
-    "typescript.tsdk": "node_modules/typescript/lib"
+	"files.associations": {
+		"wrangler.json": "jsonc"
+	},
+	"nuxt.isNuxtApp": false,
+	"typescript.tsdk": "node_modules\\typescript\\lib"
 }

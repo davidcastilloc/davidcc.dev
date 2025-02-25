@@ -11,14 +11,7 @@ export default createConfigForNuxt({
   },
   dirs: {
     src: [
-      'components',
-      'composables',
-      'layouts',
-      'middleware',
-      'pages',
-      'plugins',
-      'server',
-      'app',
+      './***/*.{vue,ts}',
     ],
   },
 })
