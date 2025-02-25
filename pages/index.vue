@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { definePageMeta, defineComponent } from '#imports';
-
 defineComponent({
   name: 'IndexPage',
 });

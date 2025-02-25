@@ -19,6 +19,9 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ['~/assets/scss/styles.scss'],
   compatibilityDate: '2024-11-01',
+  typescript: {
+    typeCheck: true,
+  },
   piniaPluginPersistedstate: {
     storage: 'localStorage',
   },
