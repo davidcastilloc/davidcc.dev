@@ -1,7 +1,12 @@
 {
-	"files.associations": {
-		"wrangler.json": "jsonc"
-	},
-	"nuxt.isNuxtApp": false,
-	"typescript.tsdk": "node_modules\\typescript\\lib"
+  "files.associations": {
+    "wrangler.json": "jsonc",
+    "*.css": "tailwindcss"
+  },
+  "nuxt.isNuxtApp": false,
+  "eslint.useFlatConfig": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }

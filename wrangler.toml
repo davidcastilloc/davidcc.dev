@@ -1,0 +1,11 @@
+	{
+    "name": "blue-sun-7602",
+    "compatibility_date": "2025-02-24",
+    "compatibility_flags": [
+      "nodejs_compat"
+    ],
+    "pages_build_output_dir": "./dist",
+    "observability": {
+      "enabled": true
+    }
+  }
