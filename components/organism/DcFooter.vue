@@ -3,7 +3,9 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
-          <p class="text-sm">&copy; {{ currentYear }} David Castillo. All rights reserved.</p>
+          <p class="text-sm">
+            &copy; {{ currentYear }} David Castillo. All rights reserved.
+          </p>
         </div>
         <div class="flex space-x-4">
           <UButton
@@ -23,18 +25,18 @@
 </template>
 
 <script setup lang="ts">
-const currentYear = new Date().getFullYear()
+const currentYear = new Date().getFullYear();
 
 const socialLinks = [
   {
     name: 'GitHub',
     icon: 'i-simple-icons-github',
-    url: 'https://github.com/davidcastilloalvarado'
+    url: 'https://github.com/davidcastilloc',
   },
   {
     name: 'LinkedIn',
     icon: 'i-simple-icons-linkedin',
-    url: 'https://www.linkedin.com/in/davidcastilloalvarado/'
-  }
-]
+    url: 'https://www.linkedin.com/in/davidjinformatico',
+  },
+];
 </script>

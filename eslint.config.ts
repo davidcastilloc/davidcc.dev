@@ -8,13 +8,9 @@ export default createConfigForNuxt({
     tooling: true,
     // Rules for formatting
     stylistic: true,
-    formatters: true,
     nuxt: {
       sortConfigKeys: true,
     },
-    typescript: {
-      strict: true,
-    }
   },
   dirs: {
     src: [
@@ -27,5 +23,6 @@ export default createConfigForNuxt({
       semi: ['error', 'always'],
       '@stylistic/semi': 'off',
       '@stylistic/quote-props': ['error', 'as-needed'],
+      'vue/component-name-in-template-casing': ['error', 'PascalCase'],
     },
   });

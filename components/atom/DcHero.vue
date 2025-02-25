@@ -5,15 +5,23 @@
         <template #header>
           <div class="hero-header">
             <UAvatar
-              src="https://avatars.githubusercontent.com/u/your-github-username"
+              src="/images/profile.webp"
               alt="Profile Picture"
               size="2xl"
             />
-            <UBadge color="primary" class="role-badge">Nuxt/Vue.js Expert</UBadge>
+            <UBadge
+              color="primary"
+              class="role-badge"
+            >
+              Nuxt/Vue.js Expert
+            </UBadge>
           </div>
         </template>
         <h1 class="hero-title">
-          <UIcon name="i-heroicons-wave-hand" class="wave-icon" />
+          <UIcon
+            name="i-heroicons-solid:hand"
+            class="wave-icon"
+          />
           Hi, I'm David Castillo
         </h1>
         <p class="hero-description">

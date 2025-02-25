@@ -48,8 +48,9 @@ const isMenuOpen = ref(false);
 
 const navigationItems = [
   { name: 'Home', path: '/' },
-  { name: 'Projects', path: '/#projects' },
-  { name: 'Skills', path: '/#skills' },
-  { name: 'Contact', path: '/#contact' },
+  { name: 'About', path: '/about' },
+  { name: 'Works', path: '/works' },
+  { name: 'Skills', path: '/skills' },
+  { name: 'Contact', path: '/contact' },
 ];
 </script>

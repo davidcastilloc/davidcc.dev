@@ -1,13 +1,13 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="min-h-screen flex flex-col">
-    <DcHeader />
+    <OrganismDcHeader />
     <main class="flex-grow pt-20">
       <slot />
     </main>
-    <DcFooter />
+    <OrganismDcFooter />
   </div>
 </template>
 
-<script setup lang="ts">
-
+<script setup>
 </script>

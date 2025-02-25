@@ -1,11 +1,11 @@
 <template>
   <div>
-    <AtomDcHero />
+    <MoleculeDcAbout />
   </div>
 </template>
 
 <script lang="ts" setup>
 defineComponent({
-  name: 'IndexPage',
+  name: 'AboutPage',
 });
 </script>
