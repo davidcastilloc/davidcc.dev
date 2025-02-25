@@ -13,7 +13,4 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare-pages',
   },
-  piniaPluginPersistedstate: {
-    storage: 'localStorage',
-  },
 });
