@@ -6,6 +6,14 @@ export default defineNuxtConfig({
       path: '~/components/atoms',
       pathPrefix: false,
     },
+    {
+      path: '~/components/molecules',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/organisms',
+      pathPrefix: false,
+    },
   ],
   devtools: { enabled: false },
   css: ['~/assets/scss/styles.scss'],

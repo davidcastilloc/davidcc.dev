@@ -10,9 +10,9 @@
 		"postinstall": "nuxt prepare",
 		"deploy": "pnpm run build && wrangler pages deploy",
 		"cf-typegen": "wrangler types",
-    "stylelint": "stylelint \"**/*.{css,scss,vue}\"",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix"
+		"stylelint": "stylelint \"**/*.{css,scss,vue}\"",
+		"lint": "eslint",
+		"lint:fix": "eslint --fix"
 	},
 	"dependencies": {
 		"@nuxt/ui": "2.21.0",
@@ -22,6 +22,7 @@
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20250224.0",
+		"@iconify-json/simple-icons": "^1.2.26",
 		"@nuxt/eslint": "1.1.0",
 		"@nuxt/eslint-config": "^1.1.0",
 		"eslint": "^9.21.0",

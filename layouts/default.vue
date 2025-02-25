@@ -1,17 +1,13 @@
 <template>
-  <div>
-    <slot />
+  <div class="min-h-screen flex flex-col">
+    <DcHeader />
+    <main class="flex-grow pt-20">
+      <slot />
+    </main>
+    <DcFooter />
   </div>
 </template>
 
-<script lang="ts" setup>
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 
-defineComponent({
-  name: 'DefaultLayout',
-});
 </script>
-
-<style>
-
-</style>

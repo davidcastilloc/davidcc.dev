@@ -8,6 +8,13 @@ export default createConfigForNuxt({
     tooling: true,
     // Rules for formatting
     stylistic: true,
+    formatters: true,
+    nuxt: {
+      sortConfigKeys: true,
+    },
+    typescript: {
+      strict: true,
+    }
   },
   dirs: {
     src: [
