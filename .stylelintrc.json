@@ -1,8 +1,14 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-recommended-vue", "stylelint-config-standard-scss"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended-vue",
+    "stylelint-config-standard-scss"
+  ],
   "overrides": [
     {
-      "files": ["**/*.vue"],
+      "files": [
+        "**/*.vue"
+      ],
       "customSyntax": "postcss-html"
     }
   ],
@@ -10,7 +16,9 @@
     "at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["use"]
+        "ignoreAtRules": [
+          "use"
+        ]
       }
     ]
   }

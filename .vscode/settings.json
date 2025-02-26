@@ -8,5 +8,11 @@
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "editor.quickSuggestions": {
     "strings": true
+  },
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }
