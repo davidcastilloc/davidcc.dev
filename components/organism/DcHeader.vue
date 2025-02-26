@@ -50,7 +50,7 @@ const isMenuOpen = ref(false);
 const navigationItems = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { name: 'Works', path: '/works' },
+  { name: 'Projects', path: '/projects' },
   { name: 'Skills', path: '/skills' },
   { name: 'Contact', path: '/contact' },
 ];

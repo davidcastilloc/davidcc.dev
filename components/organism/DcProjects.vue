@@ -13,7 +13,7 @@
       </h2>
       <div class="projects-grid">
         <UCard
-          v-for="project in projects"
+          v-for="project in page.meta.projects"
           :key="project.id"
           class="project-card"
         >
@@ -32,7 +32,7 @@
           </p>
           <div class="project-tags">
             <UBadge
-              v-for="tag in project.tags"
+              v-for="tag in project.technologies"
               :key="tag"
               color="primary"
               variant="subtle"
@@ -44,19 +44,19 @@
           <template #footer>
             <div class="project-actions">
               <UButton
-                v-if="project.demo"
+                v-if="project.demoUrl"
                 color="primary"
-                :to="project.demo"
+                :to="project.demoUrl"
                 target="_blank"
                 icon="i-heroicons-play-circle"
               >
                 Live Demo
               </UButton>
               <UButton
-                v-if="project.github"
+                v-if="project.repoUrl"
                 color="gray"
                 variant="ghost"
-                :to="project.github"
+                :to="project.repoUrl"
                 target="_blank"
                 icon="i-heroicons-code"
               >
@@ -71,37 +71,8 @@
 </template>
 
 <script setup lang="ts">
-interface Project {
-  id: number
-  title: string
-  description: string
-  image: string
-  tags: string[]
-  demo?: string
-  github?: string
-}
+const { data: page } = await useAsyncData('projects', () => queryCollection('content').path('/projects').first());
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'Project One',
-    description: 'A modern web application built with Nuxt 3 and Vue.js',
-    image: '/images/project1.jpg',
-    tags: ['Nuxt.js', 'Vue.js', 'TypeScript'],
-    demo: 'https://project1.demo',
-    github: 'https://github.com/username/project1',
-  },
-  {
-    id: 2,
-    title: 'Project Two',
-    description: 'Full-stack application with real-time features',
-    image: '/images/project2.jpg',
-    tags: ['Vue.js', 'Node.js', 'WebSocket'],
-    demo: 'https://project2.demo',
-    github: 'https://github.com/username/project2',
-  },
-  // Add more projects as needed
-];
 </script>
 
 <style lang="scss" scoped>
