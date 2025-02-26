@@ -1,11 +1,11 @@
 <template>
   <header class="w-full bg-gray-900 text-white py-4 fixed top-0 z-50">
     <div class="container mx-auto px-4">
-      <nav class="flex items-center justify-between">
+      <nav class="flex items-center justify-around">
         <NuxtLink
-          to="/"
-          class="text-xl font-bold"
-        >David Castillo</NuxtLink>
+        to="/"
+        class="text-xl font-bold"
+        >David Castillo </NuxtLink>
         <div class="hidden md:flex space-x-6">
           <NuxtLink
             v-for="item in navigationItems"
@@ -16,6 +16,7 @@
             {{ item.name }}
           </NuxtLink>
         </div>
+        <AtomDcDarkWhiteToggle class="z-51" />
         <UButton
           icon="i-heroicons-bars-3"
           color="white"
