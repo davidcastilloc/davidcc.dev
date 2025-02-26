@@ -5,15 +5,15 @@
         <template #header>
           <div class="hero-header">
             <UAvatar
-              src="/images/profile.webp"
-              alt="Profile Picture"
+              :src="resume.basics.picture.url"
+              :alt="resume.basics.name"
               size="2xl"
             />
             <UBadge
               color="primary"
               class="role-badge"
             >
-              Nuxt/Vue.js Expert
+            {{ resume.basics.role }}
             </UBadge>
           </div>
         </template>
@@ -22,10 +22,10 @@
             name="i-heroicons-solid:hand"
             class="wave-icon"
           />
-          Hi, I'm David Castillo
+          Hi, I'm {{ resume.basics.name }}
         </h1>
         <p class="hero-description">
-          A passionate Full Stack Developer specializing in Vue.js and Nuxt. I create modern, responsive, and performant web applications.
+          {{ resume.basics.headline }}
         </p>
         <template #footer>
           <div class="hero-actions">
@@ -52,7 +52,10 @@
 </template>
 
 <script setup lang="ts">
-// Component logic can be added here if needed
+const { data: resume } = await useAsyncData('resume-test', () =>
+  queryCollection('resume').where('id', '=', 'resume/resumes/david.json').first()
+)
+
 </script>
 
 <style lang="scss" scoped>
