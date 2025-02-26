@@ -5,15 +5,15 @@
         <template #header>
           <div class="hero-header">
             <UAvatar
-              :src="resume.basics.picture.url"
-              :alt="resume.basics.name"
+              :src="hero.meta.avatar"
+              :alt="hero.meta.name"
               size="2xl"
             />
             <UBadge
               color="primary"
               class="role-badge"
             >
-            {{ resume.basics.role }}
+            {{ hero.meta.role }}
             </UBadge>
           </div>
         </template>
@@ -22,10 +22,10 @@
             name="i-heroicons-solid:hand"
             class="wave-icon"
           />
-          Hi, I'm {{ resume.basics.name }}
+          Hi, I'm {{ hero.meta.name }}
         </h1>
         <p class="hero-description">
-          {{ resume.basics.headline }}
+          {{ hero.description }}
         </p>
         <template #footer>
           <div class="hero-actions">
@@ -40,7 +40,7 @@
               color="gray"
               variant="ghost"
               icon="i-heroicons-envelope"
-              to="#contact"
+              to="/contact"
             >
               Contact Me
             </UButton>
@@ -52,9 +52,8 @@
 </template>
 
 <script setup lang="ts">
-const { data: resume } = await useAsyncData('resume-test', () =>
-  queryCollection('resume').where('id', '=', 'resume/resumes/david.json').first()
-)
+const { data: hero } = await useAsyncData(() => queryCollection('content').path('/hero').first())
+
 
 </script>
 
