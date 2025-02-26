@@ -5,15 +5,15 @@
         <template #header>
           <div class="hero-header">
             <UAvatar
-              src="/images/profile.webp"
-              alt="Profile Picture"
+              :src="hero.meta.avatar"
+              :alt="hero.meta.name"
               size="2xl"
             />
             <UBadge
               color="primary"
               class="role-badge"
             >
-              Nuxt/Vue.js Expert
+            {{ hero.meta.role }}
             </UBadge>
           </div>
         </template>
@@ -22,10 +22,10 @@
             name="i-heroicons-solid:hand"
             class="wave-icon"
           />
-          Hi, I'm David Castillo
+          Hi, I'm {{ hero.meta.name }}
         </h1>
         <p class="hero-description">
-          A passionate Full Stack Developer specializing in Vue.js and Nuxt. I create modern, responsive, and performant web applications.
+          {{ hero.description }}
         </p>
         <template #footer>
           <div class="hero-actions">
@@ -40,7 +40,7 @@
               color="gray"
               variant="ghost"
               icon="i-heroicons-envelope"
-              to="#contact"
+              to="/contact"
             >
               Contact Me
             </UButton>
@@ -52,7 +52,9 @@
 </template>
 
 <script setup lang="ts">
-// Component logic can be added here if needed
+const { data: hero } = await useAsyncData(() => queryCollection('content').path('/hero').first())
+
+
 </script>
 
 <style lang="scss" scoped>
