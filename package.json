@@ -1,17 +1,45 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "nuxt": "^3.15.4",
-    "vue": "latest",
-    "vue-router": "latest"
-  }
+	"name": "nuxt-app",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "pnpm run build && wrangler pages dev",
+		"postinstall": "nuxt prepare",
+		"deploy": "pnpm run build && wrangler pages deploy",
+		"cf-typegen": "wrangler types",
+		"stylelint": "stylelint \"**/*.{css,scss,vue}\"",
+		"lint": "eslint",
+		"lint:fix": "eslint --fix"
+	},
+	"dependencies": {
+		"@nuxt/content": "3.2.2",
+		"@nuxt/fonts": "0.10.3",
+		"@nuxt/ui": "2.21.0",
+		"@nuxtjs/color-mode": "3.5.2",
+		"@pinia/nuxt": "0.10.1",
+		"@unhead/vue": "^1.11.20",
+		"@vueuse/nuxt": "12.7.0",
+		"nuxt": "^3.15.4",
+		"pinia": "^3.0.1",
+		"pinia-plugin-persistedstate": "4.2.0",
+		"vue": "latest",
+		"vue-router": "latest"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250224.0",
+		"@iconify-json/heroicons": "^1.2.2",
+		"@iconify-json/simple-icons": "^1.2.26",
+		"@nuxt/eslint": "1.1.0",
+		"@nuxt/eslint-config": "^1.1.0",
+		"eslint": "^9.21.0",
+		"h3": "^1.15.1",
+		"nitro-cloudflare-dev": "^0.2.1",
+		"sass-embedded": "^1.85.1",
+		"typescript": "^5.7.3",
+		"wrangler": "^3.110.0"
+	},
+	"packageManager": "pnpm@9.10.0+sha256.355a8ab8dbb6ad41befbef39bc4fd6b5df85e12761d2724bd01f13e878de4b13"
 }
