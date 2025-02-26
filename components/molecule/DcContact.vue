@@ -12,44 +12,53 @@
         Get in Touch
       </h2>
       <UCard class="contact-card">
-        <form @submit.prevent="handleSubmit">
+        <UForm
+          :schema="schema"
+          :state="form"
+          @submit="handleSubmit"
+        >
           <div class="form-grid">
             <UFormGroup
               label="Name"
-              required
+              name="name"
             >
               <UInput
                 v-model="form.name"
                 placeholder="Your Name"
+                required
               />
             </UFormGroup>
             <UFormGroup
               label="Email"
-              required
+              name="email"
             >
               <UInput
                 v-model="form.email"
                 type="email"
                 placeholder="your@email.com"
+                required
               />
             </UFormGroup>
             <UFormGroup
               label="Subject"
+              name="subject"
               class="subject-field"
             >
               <UInput
                 v-model="form.subject"
                 placeholder="Subject"
+                required
               />
             </UFormGroup>
             <UFormGroup
               label="Message"
-              required
+              name="message"
               class="message-field"
             >
               <UTextarea
                 v-model="form.message"
                 placeholder="Your message here..."
+                required
                 :rows="5"
               />
             </UFormGroup>
@@ -64,58 +73,54 @@
               Send Message
             </UButton>
           </div>
-        </form>
+        </UForm>
       </UCard>
     </UContainer>
   </section>
 </template>
 
 <script setup lang="ts">
-interface ContactForm {
-  name: string
-  email: string
-  subject: string
-  message: string
-}
+import { z } from 'zod';
+import type { FormSubmitEvent } from '#ui/types';
 
-const form = ref<ContactForm>({
+const form = reactive({
   name: '',
   email: '',
   subject: '',
   message: '',
 });
 
+const schema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Invalid email address'),
+  subject: z.string().min(1, 'Subject is required'),
+  message: z.string().min(1, 'Message is required'),
+});
+
+type Schema = z.output<typeof schema>;
+
 const loading = ref(false);
 
-const handleSubmit = async () => {
+const handleSubmit = async (event: FormSubmitEvent<Schema>) => {
+  console.log(event);
   loading.value = true;
   try {
-    // Implement form submission logic here
     await new Promise(resolve => setTimeout(resolve, 1000));
-    // Show success message
-    // useToast().add({
-    //   title: 'Success!',
-    //   description: 'Your message has been sent successfully.',
-    //   icon: 'i-heroicons-check-circle',
-    //   color: 'green',
-    // });
-    // Reset form
-    form.value = {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    };
+    useToast().add({
+      title: 'Success!',
+      description: 'Your message has been sent successfully.',
+      icon: 'i-heroicons-check-circle',
+      color: 'green',
+    });
   }
   catch (error) {
-    // Show error message
     console.error(error);
-    // useToast().add({
-    //   title: 'Error',
-    //   description: 'Failed to send message. Please try again.',
-    //   icon: 'i-heroicons-x-circle',
-    //   color: 'red',
-    // });
+    useToast().add({
+      title: 'Error',
+      description: 'Failed to send message. Please try again.',
+      icon: 'i-heroicons-x-circle',
+      color: 'red',
+    });
   }
   finally {
     loading.value = false;
