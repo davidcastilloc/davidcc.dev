@@ -44,6 +44,14 @@
             >
               Contact Me
             </UButton>
+            <UButton
+              color="gray"
+              variant="ghost"
+              icon="i-heroicons-calendar"
+              to="https://cal.com/davidcc.dev"
+            >
+              Schedule a Meeting
+            </UButton>
           </div>
         </template>
       </UCard>
