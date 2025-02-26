@@ -91,7 +91,7 @@ const projects: Project[] = [
     id: 1,
     title: 'Personal Portfolio',
     description: 'My personal portfolio website built with Nuxt 3 and TailwindCSS',
-    image: '/images/portfolio.webp',
+    image: 'https://picsum.photos/id/1060/536/354?blur=2',
     technologies: ['Vue.js', 'Nuxt 3', 'TailwindCSS', 'TypeScript'],
     demoUrl: 'https://davidcc.dev',
     repoUrl: 'https://github.com/davidcastillog/davidcc.dev',
