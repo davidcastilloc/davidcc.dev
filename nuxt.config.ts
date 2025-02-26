@@ -17,4 +17,14 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare_pages',
   },
+  content: {
+    preview: {
+      api: 'https://api.nuxt.studio',
+      gitInfo: {
+        name: 'davidcc.dev',
+        owner: 'davidcastilloc',
+        url: 'https://github.com/davidcastilloc/davidcc.dev'
+      }
+    }
+  }
 });
