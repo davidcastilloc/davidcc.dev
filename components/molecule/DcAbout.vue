@@ -1,8 +1,13 @@
 <template>
   <section class="about-section py-12">
     <UContainer>
-      <div class="grid md:grid-cols-2 gap-8 items-center">
-        <div class="profile-image">
+      <div
+        v-if="about?.meta"
+        class="grid md:grid-cols-2 gap-8 items-center"
+      >
+        <div
+          class="profile-image"
+        >
           <img
             :src="about.meta.image"
             :alt="about.title"
@@ -13,8 +18,14 @@
           <h2 class="text-3xl font-bold mb-4">
             {{ about.title }}
           </h2>
-          <ContentRenderer  class="text-lg mb-6" :value="about" />
-          <div v-if="about" class="key-points space-y-4">
+          <ContentRenderer
+            class="text-lg mb-6"
+            :value="about"
+          />
+          <div
+            v-if="about"
+            class="key-points space-y-4"
+          >
             <div class="flex items-start gap-3">
               <UIcon
                 name="i-heroicons-code-bracket"
@@ -59,8 +70,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: about } = await useLazyAsyncData(() => queryCollection('content').path('/about').first())
-
+const { data: about } = await useLazyAsyncData(() => queryCollection('content').path('/about').first());
 </script>
 
 <style scoped>

@@ -3,7 +3,10 @@
     <div class="hero-content">
       <UCard class="hero-card">
         <template #header>
-          <div class="hero-header">
+          <div
+            v-if="hero"
+            class="hero-header"
+          >
             <UAvatar
               :src="hero.meta.avatar"
               :alt="hero.meta.name"
@@ -13,7 +16,7 @@
               color="primary"
               class="role-badge"
             >
-            {{ hero.meta.role }}
+              {{ hero.meta.role }}
             </UBadge>
           </div>
         </template>
@@ -22,10 +25,10 @@
             name="i-heroicons-solid:hand"
             class="wave-icon"
           />
-          Hi, I'm {{ hero.meta.name }}
+          Hi, I'm {{ hero!.meta.name }}
         </h1>
         <p class="hero-description">
-          {{ hero.description }}
+          {{ hero!.description }}
         </p>
         <template #footer>
           <div class="hero-actions">
