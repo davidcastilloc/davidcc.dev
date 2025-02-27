@@ -10,12 +10,12 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'pinia-plugin-persistedstate',
     'nitro-cloudflare-dev',
+    '@nuxtjs/storybook',
   ],
   devtools: { enabled: false },
   css: ['~/assets/scss/styles.scss'],
-  compatibilityDate: '2024-11-01',
-  nitro: {
-    preset: 'cloudflare_pages',
+  colorMode: {
+    preference: 'light',
   },
   content: {
     preview: {
@@ -23,8 +23,12 @@ export default defineNuxtConfig({
       gitInfo: {
         name: 'davidcc.dev',
         owner: 'davidcastilloc',
-        url: 'https://github.com/davidcastilloc/davidcc.dev'
-      }
-    }
-  }
+        url: 'https://github.com/davidcastilloc/davidcc.dev',
+      },
+    },
+  },
+  compatibilityDate: '2024-11-01',
+  nitro: {
+    preset: 'cloudflare_pages',
+  },
 });

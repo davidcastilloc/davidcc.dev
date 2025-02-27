@@ -3,8 +3,8 @@
     <div class="container mx-auto px-4">
       <nav class="flex items-center justify-around">
         <NuxtLink
-        to="/"
-        class="text-xl font-bold"
+          to="/"
+          class="text-xl font-bold"
         >David Castillo </NuxtLink>
         <div class="hidden md:flex space-x-6">
           <NuxtLink
@@ -16,7 +16,7 @@
             {{ item.name }}
           </NuxtLink>
         </div>
-        <AtomDcDarkWhiteToggle class="z-51" />
+        <!-- <AtomDcDarkWhiteToggle class="z-51" /> -->
         <UButton
           icon="i-heroicons-bars-3"
           color="white"
