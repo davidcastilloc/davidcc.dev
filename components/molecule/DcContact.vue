@@ -11,7 +11,10 @@
         />
         Get in Touch
       </h2>
-      <UCard class="contact-card">
+      <UCard
+        v-if="!successfully"
+        class="contact-card"
+      >
         <UForm
           :schema="schema"
           :state="form"
@@ -75,13 +78,15 @@
           </div>
         </UForm>
       </UCard>
+      <MoleculeDcThanks v-else />
     </UContainer>
   </section>
 </template>
 
 <script setup lang="ts">
 import { z } from 'zod';
-import type { FormSubmitEvent } from '#ui/types';
+
+const successfully = ref(false);
 
 const form = reactive({
   name: '',
@@ -97,27 +102,38 @@ const schema = z.object({
   message: z.string().min(1, 'Message is required'),
 });
 
-type Schema = z.output<typeof schema>;
-
 const loading = ref(false);
 
-const handleSubmit = async (event: FormSubmitEvent<Schema>) => {
-  console.log(event);
+const handleSubmit = async () => {
   loading.value = true;
   try {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const response = await $fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
+    });
+    console.log(response);
+    successfully.value = true;
     useToast().add({
       title: 'Success!',
       description: 'Your message has been sent successfully.',
       icon: 'i-heroicons-check-circle',
       color: 'green',
     });
+
+    // Reset form
+    form.name = '';
+    form.email = '';
+    form.subject = '';
+    form.message = '';
   }
   catch (error) {
-    console.error(error);
+    console.error('Error sending message:', error);
     useToast().add({
       title: 'Error',
-      description: 'Failed to send message. Please try again.',
+      description: error instanceof Error ? error.message : 'Failed to send message. Please try again.',
       icon: 'i-heroicons-x-circle',
       color: 'red',
     });
