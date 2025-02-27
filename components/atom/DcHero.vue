@@ -32,7 +32,7 @@
             <UButton
               color="primary"
               icon="i-heroicons-document-text"
-              to="#projects"
+              to="/projects"
             >
               View Projects
             </UButton>
@@ -60,9 +60,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: hero } = await useAsyncData(() => queryCollection('content').path('/hero').first())
-
-
+const { data: hero } = await useAsyncData(() => queryCollection('content').path('/hero').first());
 </script>
 
 <style lang="scss" scoped>
