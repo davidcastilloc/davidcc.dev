@@ -11,45 +11,57 @@
         />
         Get in Touch
       </h2>
-      <UCard class="contact-card">
-        <form @submit.prevent="handleSubmit">
+      <UCard
+        v-if="!successfully"
+        class="contact-card"
+      >
+        <UForm
+          :schema="schema"
+          :state="form"
+          @submit="handleSubmit"
+        >
           <div class="form-grid">
             <UFormGroup
               label="Name"
-              required
+              name="name"
             >
               <UInput
                 v-model="form.name"
                 placeholder="Your Name"
+                required
               />
             </UFormGroup>
             <UFormGroup
               label="Email"
-              required
+              name="email"
             >
               <UInput
                 v-model="form.email"
                 type="email"
                 placeholder="your@email.com"
+                required
               />
             </UFormGroup>
             <UFormGroup
               label="Subject"
+              name="subject"
               class="subject-field"
             >
               <UInput
                 v-model="form.subject"
                 placeholder="Subject"
+                required
               />
             </UFormGroup>
             <UFormGroup
               label="Message"
-              required
+              name="message"
               class="message-field"
             >
               <UTextarea
                 v-model="form.message"
                 placeholder="Your message here..."
+                required
                 :rows="5"
               />
             </UFormGroup>
@@ -64,25 +76,30 @@
               Send Message
             </UButton>
           </div>
-        </form>
+        </UForm>
       </UCard>
+      <MoleculeDcThanks v-else />
     </UContainer>
   </section>
 </template>
 
 <script setup lang="ts">
-interface ContactForm {
-  name: string
-  email: string
-  subject: string
-  message: string
-}
+import { z } from 'zod';
 
-const form = ref<ContactForm>({
+const successfully = ref(false);
+
+const form = reactive({
   name: '',
   email: '',
   subject: '',
   message: '',
+});
+
+const schema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Invalid email address'),
+  subject: z.string().min(1, 'Subject is required'),
+  message: z.string().min(1, 'Message is required'),
 });
 
 const loading = ref(false);
@@ -90,32 +107,36 @@ const loading = ref(false);
 const handleSubmit = async () => {
   loading.value = true;
   try {
-    // Implement form submission logic here
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    // Show success message
-    // useToast().add({
-    //   title: 'Success!',
-    //   description: 'Your message has been sent successfully.',
-    //   icon: 'i-heroicons-check-circle',
-    //   color: 'green',
-    // });
+    const response = await $fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
+    });
+    console.log(response);
+    successfully.value = true;
+    useToast().add({
+      title: 'Success!',
+      description: 'Your message has been sent successfully.',
+      icon: 'i-heroicons-check-circle',
+      color: 'green',
+    });
+
     // Reset form
-    form.value = {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    };
+    form.name = '';
+    form.email = '';
+    form.subject = '';
+    form.message = '';
   }
   catch (error) {
-    // Show error message
-    console.error(error);
-    // useToast().add({
-    //   title: 'Error',
-    //   description: 'Failed to send message. Please try again.',
-    //   icon: 'i-heroicons-x-circle',
-    //   color: 'red',
-    // });
+    console.error('Error sending message:', error);
+    useToast().add({
+      title: 'Error',
+      description: error instanceof Error ? error.message : 'Failed to send message. Please try again.',
+      icon: 'i-heroicons-x-circle',
+      color: 'red',
+    });
   }
   finally {
     loading.value = false;

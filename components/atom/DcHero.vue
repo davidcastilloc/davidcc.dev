@@ -3,7 +3,10 @@
     <div class="hero-content">
       <UCard class="hero-card">
         <template #header>
-          <div class="hero-header">
+          <div
+            v-if="hero"
+            class="hero-header"
+          >
             <UAvatar
               :src="hero.meta.avatar"
               :alt="hero.meta.name"
@@ -13,7 +16,7 @@
               color="primary"
               class="role-badge"
             >
-            {{ hero.meta.role }}
+              {{ hero.meta.role }}
             </UBadge>
           </div>
         </template>
@@ -22,17 +25,17 @@
             name="i-heroicons-solid:hand"
             class="wave-icon"
           />
-          Hi, I'm {{ hero.meta.name }}
+          Hi, I'm {{ hero!.meta.name }}
         </h1>
         <p class="hero-description">
-          {{ hero.description }}
+          {{ hero!.description }}
         </p>
         <template #footer>
           <div class="hero-actions">
             <UButton
               color="primary"
               icon="i-heroicons-document-text"
-              to="#projects"
+              to="/projects"
             >
               View Projects
             </UButton>
@@ -44,6 +47,14 @@
             >
               Contact Me
             </UButton>
+            <UButton
+              color="gray"
+              variant="ghost"
+              icon="i-heroicons-calendar"
+              to="https://cal.com/davidcc.dev"
+            >
+              Schedule a Meeting
+            </UButton>
           </div>
         </template>
       </UCard>
@@ -52,9 +63,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: hero } = await useAsyncData(() => queryCollection('content').path('/hero').first())
-
-
+const { data: hero } = await useAsyncData(() => queryCollection('content').path('/hero').first());
 </script>
 
 <style lang="scss" scoped>
