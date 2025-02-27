@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'pinia-plugin-persistedstate',
     'nitro-cloudflare-dev',
-    '@nuxtjs/storybook',
   ],
   devtools: { enabled: false },
   css: ['~/assets/scss/styles.scss'],
