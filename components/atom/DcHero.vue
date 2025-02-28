@@ -4,43 +4,40 @@
       <UCard class="hero-card">
         <template #header>
           <div
-            v-if="hero"
             class="hero-header"
           >
             <UAvatar
-              :src="hero.meta.avatar"
-              :alt="hero.meta.name"
+              :src="avatar"
+              :alt="userName"
               size="2xl"
             />
             <UBadge
               color="primary"
               class="role-badge"
             >
-              {{ hero.meta.role }}
+              {{ role }}
             </UBadge>
           </div>
         </template>
-        <h1 class="hero-title">
+        <h1 class="sm:text-3xl md:text-5xl font-bold">
           <UIcon
             name="i-heroicons-solid:hand"
             class="wave-icon"
           />
-          Hi, I'm {{ hero!.meta.name }}
+          Hi, I'm {{ userName }}
         </h1>
-        <p class="hero-description">
-          {{ hero!.description }}
+        <p class="my-4 font-bold">
+          {{ description }}
         </p>
         <template #footer>
-          <div class="hero-actions">
+          <div class="flex gap-4 justify-center">
             <UButton
-              color="primary"
               icon="i-heroicons-document-text"
               to="/projects"
             >
               View Projects
             </UButton>
             <UButton
-              color="gray"
               variant="ghost"
               icon="i-heroicons-envelope"
               to="/contact"
@@ -48,7 +45,6 @@
               Contact Me
             </UButton>
             <UButton
-              color="gray"
               variant="ghost"
               icon="i-heroicons-calendar"
               to="https://cal.com/davidcc.dev"
@@ -63,7 +59,21 @@
 </template>
 
 <script setup lang="ts">
-const { data: hero } = await useAsyncData(() => queryCollection('content').path('/hero').first());
+export interface IHeroProps {
+  userName: string
+  description: string
+  avatar: string
+  role: string
+}
+
+const props = withDefaults(defineProps<IHeroProps>(), {
+  description: 'A Professional Frontend Developer',
+  avatar: 'https://picsum.photos/536/354',
+  userName: 'David Castillo',
+  role: 'frontend',
+});
+
+const { description, avatar, userName, role } = props;
 </script>
 
 <style lang="scss" scoped>
@@ -105,18 +115,6 @@ const { data: hero } = await useAsyncData(() => queryCollection('content').path(
 .wave-icon {
   font-size: 2rem;
   animation: wave 2s infinite;
-}
-
-.hero-description {
-  font-size: 1.25rem;
-  color: var(--color-gray-600);
-  margin-bottom: 2rem;
-}
-
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
 }
 
 @keyframes wave {

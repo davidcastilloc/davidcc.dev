@@ -1,25 +1,24 @@
 <template>
-  <header class="w-full bg-gray-900 text-white py-4 fixed top-0 z-50">
+  <header class="w-full py-4 fixed top-0 z-50">
     <div class="container mx-auto px-4">
       <nav class="flex items-center justify-around">
         <NuxtLink
           to="/"
-          class="text-xl font-bold"
+          class="text-xl hover:text-primary font-bold"
         >David Castillo </NuxtLink>
         <div class="hidden md:flex space-x-6">
           <NuxtLink
             v-for="item in navigationItems"
             :key="item.path"
             :to="item.path"
-            class="hover:text-gray-300 transition-colors"
+            class="text-lg hover:text-primary"
           >
             {{ item.name }}
           </NuxtLink>
         </div>
-        <!-- <AtomDcDarkWhiteToggle class="z-51" /> -->
+        <AtomDcDarkWhiteToggle class="z-51" />
         <UButton
           icon="i-heroicons-bars-3"
-          color="white"
           variant="ghost"
           class="md:hidden"
           @click="isMenuOpen = !isMenuOpen"
@@ -34,7 +33,7 @@
           v-for="item in navigationItems"
           :key="item.path"
           :to="item.path"
-          class="block hover:text-gray-300 transition-colors"
+          class="block transition-colors"
           @click="isMenuOpen = false"
         >
           {{ item.name }}

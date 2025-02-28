@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gray-900 text-white py-8 mt-auto">
+  <footer class="py-8 mt-auto">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
@@ -12,7 +12,6 @@
             v-for="link in socialLinks"
             :key="link.name"
             :icon="link.icon"
-            color="white"
             variant="ghost"
             :href="link.url"
             target="_blank"
