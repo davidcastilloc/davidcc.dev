@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full py-4 fixed top-0 z-50">
+  <header class="w-full bg-background/75 backdrop-blur border-b py-4 fixed top-0 z-50">
     <div class="container mx-auto px-4">
       <nav class="flex items-center justify-around">
         <NuxtLink
@@ -11,7 +11,7 @@
             v-for="item in navigationItems"
             :key="item.path"
             :to="item.path"
-            class="text-lg hover:text-primary"
+            :class="linkClasses(item)"
           >
             {{ item.name }}
           </NuxtLink>
@@ -47,10 +47,18 @@
 const isMenuOpen = ref(false);
 
 const navigationItems = [
-  { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Projects', path: '/projects' },
   { name: 'Skills', path: '/skills' },
   { name: 'Contact', path: '/contact' },
 ];
+
+const route = useRoute();
+const currentRoute = computed(() => route.path);
+
+const linkClasses = computed(() => item => [
+  'text-lg',
+  'hover:text-primary',
+  { 'text-primary font-bold': currentRoute.value === item.path },
+]);
 </script>

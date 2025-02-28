@@ -72,7 +72,6 @@
 
 <script setup lang="ts">
 const { data: page } = await useAsyncData('projects', () => queryCollection('content').path('/projects').first());
-
 </script>
 
 <style lang="scss" scoped>

@@ -1,5 +1,5 @@
 <template>
-  <section class="about-section py-12">
+  <section class="about-section py-12 dark:text-gray-300">
     <UContainer>
       <div
         v-if="about?.meta"
@@ -29,19 +29,21 @@
             <div class="flex items-start gap-3">
               <UIcon
                 name="i-heroicons-code-bracket"
-                class="text-primary mt-1"
+                class="mt-1"
               />
               <div>
                 <h3 class="font-semibold">
                   Technical Expertise
                 </h3>
-                <p>{{ about.meta.technicalExpertise }}</p>
+                <p>
+                  {{ about.meta.technicalExpertise }}
+                </p>
               </div>
             </div>
             <div class="flex items-start gap-3">
               <UIcon
                 name="i-heroicons-light-bulb"
-                class="text-primary mt-1"
+                class="mt-1"
               />
               <div>
                 <h3 class="font-semibold">
@@ -53,7 +55,7 @@
             <div class="flex items-start gap-3">
               <UIcon
                 name="i-heroicons-users"
-                class="text-primary mt-1"
+                class="mt-1"
               />
               <div>
                 <h3 class="font-semibold">

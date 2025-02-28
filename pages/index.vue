@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-16">
     <AtomDcHero
       :user-name="heroData.meta.name"
       :description="heroData.description"
